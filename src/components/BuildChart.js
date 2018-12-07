@@ -16,8 +16,10 @@ class BuildChart extends React.Component {
   buildChecker = e => {
     e.preventDefault();
     const { height, weight } = this.state;
+    // eslint-disable-next-line
     if (height == 56 && weight <= 185) {
       this.setState({ message: "Height & Weight is ok" });
+      // eslint-disable-next-line
     } else if (height == 57 && weight <= 193) {
       this.setState({ message: "Height & Weight is ok" });
     } else {
