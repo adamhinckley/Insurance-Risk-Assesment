@@ -19,7 +19,7 @@ class BuildChart extends React.Component {
     const { weight, height, age, message } = this.state;
 
     return (
-      <div>
+      <div className="buildChart">
         <div>
           <label>Weight</label>
           <input name="weight" value={weight} onChange={this.changeHandler} type="number" pattern="\d*" />

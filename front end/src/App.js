@@ -1,5 +1,6 @@
 import React from "react";
 import BuildChart from "./components/BuildChart";
+import Home from "./components/Home";
 import { Route, NavLink } from "react-router-dom";
 
 class App extends React.Component {
@@ -10,13 +11,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <nav>
           <NavLink to="/">Home</NavLink> &nbsp;
           <NavLink to="/check-build">Check Build</NavLink>
         </nav>
         <section>
           <Route exact path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
+          <Route exact path="/" render={ownProps => <Home {...ownProps} />} />
         </section>
       </div>
     );
