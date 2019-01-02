@@ -1,33 +1,4 @@
 import React from "react";
-
-const allProductsArr = [
-  { carrier: "Foresters", product: "Strong Foundation", type: "term" },
-  { carrier: "Foresters", product: "Smart UL" },
-  { carrier: "Foresters", product: "Prepared" },
-  { carrier: "Foresters", product: "Advantage Plus Whole Life" },
-  { carrier: "Foresters", product: "PlanRight" },
-  { carrier: "CFG", product: "Safeshield", type: "term" },
-  { carrier: "CFG", product: "Classic Choice Whole Life" },
-  { carrier: "Mutual of Omaha", product: "Term Life Express", type: "term" },
-  { carrier: "Mutual of Omaha", product: "Guaranteed Advantage" },
-  { carrier: "Mutual of Omaha", product: "Living Promise" },
-  { carrier: "Mutual of Omaha", product: "Guaranteed Universal Life" },
-  { carrier: "Mutual of Omaha", product: "Children's Whole Life" },
-  { carrier: "National Western Life", product: "Freedom Term Express" },
-  { carrier: "Phoenix/ Nassau Re", product: "Safe Harbor" },
-  { carrier: "Phoenix/ Nassau Re", product: "Remembrance" },
-  { carrier: "Transamerica", product: "Whole Life" },
-  { carrier: "Transamerica", product: "Acci-Protector" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" },
-  { carrier: "", product: "" }
-];
 class BuildChart extends React.Component {
   constructor() {
     super();
@@ -35,51 +6,17 @@ class BuildChart extends React.Component {
       height: undefined,
       weight: "",
       message: "",
-      products: []
+      products: [],
+      gender: "",
+      age: ""
     };
   }
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  allProducts = () => {
-    this.setState({ message: "Build is good for all products", products: allProductsArr });
-  };
-
-  simplifiedNoForestersCFG = () => {
-    this.setState({
-      message: "Build is good for all products except Foresters Strong Foundation, Smart UL, Advantage plus, CFG term",
-      products: []
-    });
-  };
-
-  buildChecker = (e, clientHeight, clientWeight) => {
-    e.preventDefault();
-    console.log("build checker fired", this.state.products);
-    this.setState({ message: "" });
-
-    let { height, weight } = this.state;
-    height = Number(height);
-    if (height === 56 && weight <= 185) {
-      this.allProducts();
-    } else if (height === 56 && weight <= 190) {
-      this.simplifiedNoForestersCFG();
-    } else if (height === 56 && weight <= 194) {
-      this.setState({
-        message:
-          "Build is good for all products except Foresters Strong Foundation, Smart UL, Advantage plus, CFG term",
-        products: []
-      });
-    } else if (height === 57 && weight <= 194) {
-      this.setState({ message: "Height & Weight is ok", products: [] });
-    } else {
-      this.setState({ message: "only apply Transamerica 45-85 or guaranteed issue", products: [] });
-    }
-  };
-
   render() {
-    const { weight, height, products, message } = this.state;
-    console.log(allProductsArr);
+    const { weight, height, age, message } = this.state;
 
     return (
       <div>
@@ -120,6 +57,31 @@ class BuildChart extends React.Component {
             <option value={82}>6'10</option>
           </select>
         </div>
+
+        {/* //radio buttons for gender */}
+        <div>
+          <label>Male</label>
+          <input
+            type="radio"
+            value="Male"
+            name="gender"
+            checked={this.state.gender === "male"}
+            onChange={this.changeHandler}
+          />
+          <label htmlFor="label">Female</label>
+          <input
+            type="radio"
+            value="Female"
+            name="gender"
+            checked={this.state.gender === "female"}
+            onChange={this.changeHandler}
+          />
+        </div>
+        <div>
+          <label>Age</label>
+          <input name="age" value={age} onChange={this.changeHandler} type="number" pattern="\d*" />
+        </div>
+
         <div>
           <button onClick={this.buildChecker}>Check Build</button>
         </div>

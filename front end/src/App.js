@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Home</NavLink> &nbsp;
           <NavLink to="/check-build">Check Build</NavLink>
         </nav>
         <section>
