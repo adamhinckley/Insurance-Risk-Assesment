@@ -10,9 +10,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false
+      loggedIn: true
     };
   }
+
+  // componentDidMount() {
+  //   const token = localStorage.getItem("jwt");
+  //   if (token) {
+  //     this.setState({ loggedIn: true });
+  //     this.props.history.push("/home");
+  //   }
+  // }
 
   loginHandler = async e => {
     e.preventDefault();

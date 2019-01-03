@@ -24,7 +24,7 @@ class LoginPage extends Component {
         this.props.loginHandler(e);
         this.setState({ message: "Login successful" });
       })
-      .then(() => this.props.history.push("/"))
+      .then(() => this.props.history.push("/home"))
       .catch(err => {
         console.log("login error", err.response.data.error);
         this.setState({ message: "Login failed" });
@@ -40,7 +40,7 @@ class LoginPage extends Component {
     return (
       <div className="login-container">
         <form className="login" onSubmit={this.handleSubmit}>
-          <h1>Adam's Notes</h1>
+          <h1>Risk Assessment</h1>
           <h1>Login</h1>
           <input
             type="text"
@@ -59,6 +59,7 @@ class LoginPage extends Component {
             className="login-input"
           />
           <button className="form-button">Login</button>
+          <p>testpassword</p>
           <Link className="rr-link " to="/register">
             <p>register</p>
           </Link>

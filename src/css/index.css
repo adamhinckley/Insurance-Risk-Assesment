@@ -229,6 +229,12 @@ nav .navLink {
 .buildChart ::placeholder {
   color: #59abdb;
 }
+.buildChart .eligible-products-container {
+  margin-top: 10px;
+}
+.buildChart .eligible-products-container p {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .med-list {
   display: flex;
   justify-content: center;

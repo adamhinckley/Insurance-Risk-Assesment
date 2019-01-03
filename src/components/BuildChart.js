@@ -9,8 +9,8 @@ class BuildChart extends React.Component {
     this.state = {
       height: undefined,
       weight: "",
-      message: "",
-      products: [],
+      message: "Eligible to apply for:",
+      products: ["CFG", "Dignified Choice"],
       gender: "",
       age: "",
       maleChecked: false,
@@ -25,9 +25,18 @@ class BuildChart extends React.Component {
     e.preventDefault();
     console.log("check build fired");
     const { age, height, weight, gender } = this.state;
-    axios.post(`${api}/api/build`, { age, height, weight, gender }).then(res => {
-      console.log(res);
-    });
+    axios
+      .post(`${api}/api/build`, { age, height, weight, gender })
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          products: res.data.plans,
+          message: "Eligible to apply for:"
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   radioHandler = e => {
@@ -42,7 +51,7 @@ class BuildChart extends React.Component {
     return (
       <div className="buildChart">
         <div className="back-button-container">
-          <Link to="/">
+          <Link to="/home">
             <button className="back-button">back</button>
           </Link>
         </div>
@@ -108,7 +117,7 @@ class BuildChart extends React.Component {
               value="Male"
               name="gender"
               checked={this.state.maleChecked}
-              onClick={this.radioHandler}
+              onChange={this.radioHandler}
               className="radio-button"
             />
           </div>
@@ -141,16 +150,11 @@ class BuildChart extends React.Component {
             Check Build
           </button>
         </div>
-        <div>
+        <div className="eligible-products-container">
           <p>{message}</p>
 
           {this.state.products.map(p => {
-            return (
-              <p>
-                {p.carrier} &nbsp;
-                {p.product}
-              </p>
-            );
+            return <p key={p}>{p}</p>;
           })}
         </div>
       </div>
