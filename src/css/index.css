@@ -152,6 +152,7 @@ nav .navLink {
 }
 .home h2 {
   margin-bottom: 100px;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
 }
 .home button {
@@ -228,6 +229,48 @@ nav .navLink {
 .buildChart ::placeholder {
   color: #59abdb;
 }
-.medication-select {
+.med-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.med-list button {
+  width: 300px;
+  height: 45px;
+  background-color: #59abdb;
+  color: white;
+  border-radius: 7px;
+  font-size: 1.4rem;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.med-list .back-button-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 375px;
+  margin-top: 20px;
+}
+.med-list .back-button {
+  width: 100px;
+  margin-right: 36px;
+  cursor: pointer;
+}
+.med-list .input-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.med-list .input {
+  width: 300px;
+  height: 30px;
+  font-size: 1.4rem;
   background-color: white;
+  color: #59abdb;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.med-list ::placeholder {
+  color: #59abdb;
 }

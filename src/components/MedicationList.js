@@ -11,17 +11,20 @@ export default class MedicationList extends Component {
       message: ""
     };
   }
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
     return (
-      <div className="build-chart">
+      <div className="med-list">
         <div className="back-button-container">
           <Link to="/">
             <button className="back-button">back</button>
           </Link>
         </div>
-        <form>
+        <form className="input-container">
           <label htmlFor="Product" />
-          <select name="product" value={this.state.product}>
+          <select name="product" value={this.state.product} className="input">
             <option value="PlanRight" className="medication-select">
               PlanRight
             </option>
@@ -32,8 +35,10 @@ export default class MedicationList extends Component {
             name="medication"
             placeholder="medication"
             value={this.state.medication}
-            className="medication-select"
+            className="input"
+            onChange={this.changeHandler}
           />
+          <button>submit</button>
         </form>
       </div>
     );

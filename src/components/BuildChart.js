@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const api = "";
+const api = "https://insurance-risk-assesment.herokuapp.com";
 class BuildChart extends React.Component {
   constructor() {
     super();
@@ -24,7 +24,7 @@ class BuildChart extends React.Component {
   getResults = e => {
     e.preventDefault();
     const { height, weight } = this.state;
-    axios.get(`${api}`, { height, weight });
+    axios.get(`${api}/`, { height, weight });
   };
 
   radioHandler = e => {
