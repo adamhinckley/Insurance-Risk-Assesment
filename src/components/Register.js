@@ -24,7 +24,7 @@ class Register extends Component {
   submitHandler = e => {
     e.preventDefault();
     axios
-      .post("https://adamsnotes.herokuapp.com/api/register", this.state.user)
+      .post("https://insurance-risk-assesment.herokuapp.com/api/registration", this.state.user)
       .then(res => {
         if (res.status === 201) {
           this.setState({
