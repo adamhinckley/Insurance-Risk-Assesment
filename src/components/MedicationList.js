@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class MedicationList extends Component {
   constructor() {
@@ -12,8 +13,12 @@ export default class MedicationList extends Component {
   }
   render() {
     return (
-      <div>
-        <h2>Medication Check</h2>
+      <div className="build-chart">
+        <div className="back-button-container">
+          <Link to="/">
+            <button className="back-button">back</button>
+          </Link>
+        </div>
         <form>
           <label htmlFor="Product" />
           <select name="product" value={this.state.product}>

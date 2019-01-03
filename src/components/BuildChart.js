@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const api = "";
 class BuildChart extends React.Component {
@@ -11,7 +12,9 @@ class BuildChart extends React.Component {
       message: "",
       products: [],
       gender: "",
-      age: ""
+      age: "",
+      maleChecked: false,
+      femaleChecked: false
     };
   }
   changeHandler = e => {
@@ -24,19 +27,35 @@ class BuildChart extends React.Component {
     axios.get(`${api}`, { height, weight });
   };
 
+  radioHandler = e => {
+    !this.state.maleChecked
+      ? this.setState({ maleChecked: true, femaleChecked: false, gender: "male" })
+      : this.setState({ maleChecked: false, femaleChecked: true, gender: "female" });
+  };
+
   render() {
     const { weight, height, age, message } = this.state;
 
     return (
       <div className="buildChart">
-        <div>
-          <label>Weight</label>
-          <input name="weight" value={weight} onChange={this.changeHandler} type="number" pattern="\d*" />
+        <div className="back-button-container">
+          <Link to="/">
+            <button className="back-button">back</button>
+          </Link>
         </div>
-        <div>
-          <label>Height</label>
-          <select name="height" value={height} onChange={this.changeHandler} className="custom-select" required>
-            <option value="">Height</option>
+        <div className="input-container">
+          <select
+            name="height"
+            value={height}
+            onChange={this.changeHandler}
+            className="custom-select"
+            required
+            placeholder="choose"
+            className="input"
+          >
+            <option value="" className="option">
+              height
+            </option>
             <option value={56}>4'8</option>
             <option value={57}>4'9</option>
             <option value={58}>4'10</option>
@@ -66,29 +85,53 @@ class BuildChart extends React.Component {
             <option value={82}>6'10</option>
           </select>
         </div>
-
-        {/* //radio buttons for gender */}
         <div>
-          <label>Male</label>
           <input
-            type="radio"
-            value="Male"
-            name="gender"
-            checked={this.state.gender === "male"}
+            name="weight"
+            value={weight}
             onChange={this.changeHandler}
-          />
-          <label htmlFor="label">Female</label>
-          <input
-            type="radio"
-            value="Female"
-            name="gender"
-            checked={this.state.gender === "female"}
-            onChange={this.changeHandler}
+            type="number"
+            pattern="\d*"
+            placeholder="weight"
+            className="input"
           />
         </div>
+
+        {/* //radio buttons for gender */}
+        <div className="radio-button-container">
+          <div className="radio-div">
+            <label className="radio-label">Male</label>
+            <input
+              type="radio"
+              value="Male"
+              name="gender"
+              checked={this.state.maleChecked}
+              onClick={this.radioHandler}
+              className="radio-button"
+            />
+          </div>
+          <div className="radio-div">
+            <label className="radio-label">Female</label>
+            <input
+              type="radio"
+              value="Female"
+              name="gender"
+              checked={this.state.femaleChecked}
+              onChange={this.radioHandler}
+              className="radio-button"
+            />
+          </div>
+        </div>
         <div>
-          <label>Age</label>
-          <input name="age" value={age} onChange={this.changeHandler} type="number" pattern="\d*" />
+          <input
+            name="age"
+            value={age}
+            onChange={this.changeHandler}
+            type="number"
+            pattern="\d*"
+            className="input"
+            placeholder="age"
+          />
         </div>
 
         <div>

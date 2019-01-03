@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <nav>
+        {/* <nav>
           <NavLink to="/" className="navLink">
             Home |
           </NavLink>
@@ -32,7 +32,7 @@ class App extends React.Component {
           <NavLink to="/med-list" className="navLink">
             Med List
           </NavLink>
-        </nav>
+        </nav> */}
         <section>
           <Route exact path="/" render={ownProps => <Home {...ownProps} />} />
           <Route exact path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
