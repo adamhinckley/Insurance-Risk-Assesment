@@ -1,8 +1,10 @@
 import React from "react";
 import BuildChart from "./components/BuildChart";
 import Home from "./components/Home";
-import { Route, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import MedicationList from "./components/MedicationList";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,29 +19,21 @@ class App extends React.Component {
     localStorage.getItem("jwt") ? await this.setState({ loggedIn: true }) : alert("you need to login");
   };
 
-  render() {
-    return (
+  render()  {
+    return !this.state.loggedIn ? (
       <div className="app">
-        {/* <nav>
-          <NavLink to="/" className="navLink">
-            Home |
-          </NavLink>
-          &nbsp;
-          <NavLink to="/check-build" className="navLink">
-            Check Build |
-          </NavLink>
-          &nbsp;
-          <NavLink to="/med-list" className="navLink">
-            Med List
-          </NavLink>
-        </nav> */}
-        <section>
+        <Switch>
+          <Route  path="/register" render={ownProps => <Register {...ownProps} />} />
+          <Route  path="/login" render={ownProps => <Login {...ownProps} loginHandler={this.loginHandler} />} />
+        </Switch>
+        ):(
+        <Switch>
           <Route exact path="/" render={ownProps => <Home {...ownProps} />} />
-          <Route exact path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
-          <Route exact path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
-        </section>
+          <Route  path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
+          <Route  path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
+        </Switch>
       </div>
-    );
+    )
   }
 }
 

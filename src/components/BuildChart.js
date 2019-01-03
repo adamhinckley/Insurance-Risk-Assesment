@@ -23,8 +23,11 @@ class BuildChart extends React.Component {
 
   getResults = e => {
     e.preventDefault();
-    const { height, weight } = this.state;
-    axios.get(`${api}/`, { height, weight });
+    console.log("check build fired");
+    const { age, height, weight, gender } = this.state;
+    axios.post(`${api}/api/build`, { age, height, weight, gender }).then(res => {
+      console.log(res);
+    });
   };
 
   radioHandler = e => {
@@ -43,7 +46,7 @@ class BuildChart extends React.Component {
             <button className="back-button">back</button>
           </Link>
         </div>
-        <div className="input-container">
+        <form className="input-container" onSubmit={this.getResults}>
           <select
             name="height"
             value={height}
@@ -84,7 +87,7 @@ class BuildChart extends React.Component {
             <option value={81}>6'9</option>
             <option value={82}>6'10</option>
           </select>
-        </div>
+        </form>
         <div>
           <input
             name="weight"
@@ -135,7 +138,9 @@ class BuildChart extends React.Component {
         </div>
 
         <div>
-          <button onClick={this.buildChecker}>Check Build</button>
+          <button onClick={this.getResults} type="submit">
+            Check Build
+          </button>
         </div>
         <div>
           <p>{message}</p>

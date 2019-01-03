@@ -33,12 +33,12 @@ export default class MedicationList extends Component {
           <input
             type="text"
             name="medication"
-            placeholder="medication"
+            placeholder="Medication"
             value={this.state.medication}
             className="input"
             onChange={this.changeHandler}
           />
-          <button>submit</button>
+          <button>Check Medication</button>
         </form>
       </div>
     );
