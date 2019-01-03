@@ -7,8 +7,15 @@ import MedicationList from "./components/MedicationList";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loggedIn: false
+    };
   }
+
+  loginHandler = async e => {
+    e.preventDefault();
+    localStorage.getItem("jwt") ? await this.setState({ loggedIn: true }) : alert("you need to login");
+  };
 
   render() {
     return (
@@ -27,8 +34,8 @@ class App extends React.Component {
           </NavLink>
         </nav>
         <section>
-          <Route exact path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
           <Route exact path="/" render={ownProps => <Home {...ownProps} />} />
+          <Route exact path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
           <Route exact path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
         </section>
       </div>

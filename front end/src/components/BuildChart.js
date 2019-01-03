@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+
+const api = "";
 class BuildChart extends React.Component {
   constructor() {
     super();
@@ -13,6 +16,12 @@ class BuildChart extends React.Component {
   }
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  getResults = e => {
+    e.preventDefault();
+    const { height, weight } = this.state;
+    axios.get(`${api}`, { height, weight });
   };
 
   render() {

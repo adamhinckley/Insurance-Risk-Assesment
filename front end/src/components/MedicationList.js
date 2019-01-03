@@ -17,9 +17,18 @@ export default class MedicationList extends Component {
         <form>
           <label htmlFor="Product" />
           <select name="product" value={this.state.product}>
-            <option value="PlanRight">PlanRight</option>/>
+            <option value="PlanRight" className="medication-select">
+              PlanRight
+            </option>
+            />
           </select>
-          <input type="text" name="medication" placeholder="medication" value={this.state.medication} />
+          <input
+            type="text"
+            name="medication"
+            placeholder="medication"
+            value={this.state.medication}
+            className="medication-select"
+          />
         </form>
       </div>
     );

@@ -128,10 +128,9 @@ table {
 }
 * {
   box-sizing: border-box;
-  font-size: 10px;
   margin: 0 auto;
-  background-color: lightgray;
-  display: flex;
+  background-color: #59abdb;
+  font-size: 10px;
 }
 nav {
   display: flex;
@@ -148,4 +147,7 @@ nav .navLink {
   flex-direction: column;
   align-items: center;
   height: 100vh;
+}
+.medication-select {
+  background-color: white;
 }
