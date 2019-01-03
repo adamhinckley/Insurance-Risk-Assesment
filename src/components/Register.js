@@ -70,7 +70,7 @@ class Register extends Component {
           />
           <button className="form-button">Register</button>
           <p>{this.state.message}</p>
-          <Link className="rr-link " to="/">
+          <Link className="rr-link " to="/login">
             <p>back to login page</p>
           </Link>
         </form>
