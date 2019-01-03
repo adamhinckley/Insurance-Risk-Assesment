@@ -19,21 +19,21 @@ class App extends React.Component {
     localStorage.getItem("jwt") ? await this.setState({ loggedIn: true }) : alert("you need to login");
   };
 
-  render()  {
+  render() {
     return !this.state.loggedIn ? (
+      <Switch>
+        <Route path="/register" render={ownProps => <Register {...ownProps} />} />
+        <Route path="/" render={ownProps => <Login {...ownProps} loginHandler={this.loginHandler} />} />
+      </Switch>
+    ) : (
       <div className="app">
         <Switch>
-          <Route  path="/register" render={ownProps => <Register {...ownProps} />} />
-          <Route  path="/login" render={ownProps => <Login {...ownProps} loginHandler={this.loginHandler} />} />
-        </Switch>
-        ):(
-        <Switch>
-          <Route exact path="/" render={ownProps => <Home {...ownProps} />} />
-          <Route  path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
-          <Route  path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
+          <Route exact path="/home" render={ownProps => <Home {...ownProps} />} />
+          <Route path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
+          <Route path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
         </Switch>
       </div>
-    )
+    );
   }
 }
 
