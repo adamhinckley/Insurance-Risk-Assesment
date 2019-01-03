@@ -24,7 +24,7 @@ class LoginPage extends Component {
         this.props.loginHandler(e);
         this.setState({ message: "Login successful" });
       })
-      .then(() => this.props.history.push("/home"))
+      .then(() => this.props.history.push("/"))
       .catch(err => {
         console.log("login error", err.response.data.error);
         this.setState({ message: "Login failed" });

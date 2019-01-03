@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Autocomplete from "./AutoComplete";
 
 export default class MedicationList extends Component {
   constructor() {
@@ -37,7 +38,7 @@ export default class MedicationList extends Component {
         </div>
         <form className="input-container" onSubmit={this.getMedicationResult}>
           <label htmlFor="Product" />
-          <select name="product" value={this.state.product} className="input">
+          <select name="product" value={this.state.product} className="input" onChange={this.changeHandler}>
             <option value="" className="medication-select">
               Choose Product
             </option>
@@ -49,14 +50,28 @@ export default class MedicationList extends Component {
             </option>
             />
           </select>
-          <input
-            type="text"
-            name="medication"
-            placeholder="Medication"
+          <Autocomplete
+            suggestions={[
+              "Alligator",
+              "Bask",
+              "Crocodilian",
+              "Death Roll",
+              "Eggs",
+              "Jaws",
+              "Reptile",
+              "Solitary",
+              "Tail",
+              "Wetlands"
+            ]}
             value={this.state.medication}
             className="input"
+            placeholder="Medication"
             onChange={this.changeHandler}
-          />
+            name="medication"
+          >
+            <input type="text" />
+          </Autocomplete>
+
           <button>Check Medication</button>
         </form>
       </div>

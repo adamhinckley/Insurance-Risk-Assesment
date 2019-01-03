@@ -37,12 +37,12 @@ class App extends React.Component {
     return !this.state.loggedIn ? (
       <Switch>
         <Route path="/register" render={ownProps => <Register {...ownProps} />} />
-        <Route path="/" render={ownProps => <Login {...ownProps} loginHandler={this.loginHandler} />} />
+        <Route path="/login" render={ownProps => <Login {...ownProps} loginHandler={this.loginHandler} />} />
       </Switch>
     ) : (
       <div className="app">
         <Switch>
-          <Route exact path="/home" render={ownProps => <Home {...ownProps} />} />
+          <Route exact path="/" render={ownProps => <Home {...ownProps} />} />
           <Route path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
           <Route path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
         </Switch>

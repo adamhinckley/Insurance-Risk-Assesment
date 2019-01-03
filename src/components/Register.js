@@ -34,7 +34,7 @@ class Register extends Component {
         } else {
           throw new Error();
         }
-        this.props.history.push("/");
+        this.props.history.push("/login");
       })
       .catch(err => {
         this.setState({
