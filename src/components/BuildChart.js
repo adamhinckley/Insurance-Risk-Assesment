@@ -9,8 +9,8 @@ class BuildChart extends React.Component {
     this.state = {
       height: undefined,
       weight: "",
-      message: "Eligible to apply for:",
-      products: ["CFG", "Dignified Choice"],
+      message: "",
+      products: [],
       gender: "",
       age: "",
       maleChecked: false,
