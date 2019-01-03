@@ -6,7 +6,6 @@ export default class MedicationList extends Component {
   constructor() {
     super();
     this.state = {
-      // carrier: '',
       product: "",
       medication: "",
       message: ""
@@ -19,9 +18,14 @@ export default class MedicationList extends Component {
   getMedicationResult = e => {
     e.preventDefault();
     const { product, medication } = this.state;
-    axios.post("endpoint", product, medication).then(res => {
-      console.log(res);
-    });
+    axios
+      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { plan: product, med: medication })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   render() {
     return (
@@ -31,7 +35,7 @@ export default class MedicationList extends Component {
             <button className="back-button">back</button>
           </Link>
         </div>
-        <form className="input-container">
+        <form className="input-container" onSubmit={this.getMedicationResult}>
           <label htmlFor="Product" />
           <select name="product" value={this.state.product} className="input">
             <option value="" className="medication-select">
