@@ -14,13 +14,13 @@ class App extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   const token = localStorage.getItem("jwt");
-  //   if (token) {
-  //     this.setState({ loggedIn: true });
-  //     this.props.history.push("/home");
-  //   }
-  // }
+  componentDidMount() {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      this.setState({ loggedIn: true });
+      this.props.history.push("/");
+    }
+  }
 
   loginHandler = async e => {
     e.preventDefault();
