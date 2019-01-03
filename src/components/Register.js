@@ -11,7 +11,8 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      user: { ...initialUser },
+      username: "",
+      password: "",
       message: ""
     };
   }
@@ -22,14 +23,16 @@ class Register extends Component {
   };
 
   submitHandler = e => {
+    const { username, password } = this.state;
     e.preventDefault();
     axios
-      .post("https://insurance-risk-assesment.herokuapp.com/api/registration", this.state.user)
+      .post("https://insurance-risk-assesment.herokuapp.com/api/registration", { username, password })
       .then(res => {
         if (res.status === 201) {
           this.setState({
             message: "Registration Successful",
-            user: { ...initialUser }
+            username: "",
+            password: ""
           });
         } else {
           throw new Error();
@@ -39,7 +42,8 @@ class Register extends Component {
       .catch(err => {
         this.setState({
           message: "registration failed",
-          user: { ...initialUser }
+          username: "",
+          password: ""
         });
       });
   };
@@ -48,13 +52,13 @@ class Register extends Component {
     return (
       <div className="login-container">
         <form onSubmit={this.submitHandler} className="login">
-          <h1>Adam's Notes</h1>
+          <h1>Risk Assessment</h1>
           <h1>Register</h1>
           <input
             type="text"
             id="username"
             name="username"
-            value={this.state.user.username}
+            value={this.state.username}
             onChange={this.changeHandler}
             className="login-input"
             placeholder="Username"
@@ -63,14 +67,14 @@ class Register extends Component {
             type="password"
             id="password"
             name="password"
-            value={this.state.user.password}
+            value={this.state.password}
             onChange={this.changeHandler}
             className="login-input"
             placeholder="Password"
           />
           <button className="form-button">Register</button>
           <p>{this.state.message}</p>
-          <Link className="rr-link " to="/login">
+          <Link className="rr-link " to="/">
             <p>back to login page</p>
           </Link>
         </form>
