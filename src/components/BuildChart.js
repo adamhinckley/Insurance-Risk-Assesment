@@ -51,7 +51,7 @@ class BuildChart extends React.Component {
     return (
       <div className="buildChart">
         <div className="back-button-container">
-          <Link to="/home">
+          <Link to="/">
             <button className="back-button">back</button>
           </Link>
         </div>

@@ -32,7 +32,7 @@ export default class MedicationList extends Component {
     return (
       <div className="med-list">
         <div className="back-button-container">
-          <Link to="/home">
+          <Link to="/">
             <button className="back-button">back</button>
           </Link>
         </div>
