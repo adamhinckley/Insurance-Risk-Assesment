@@ -19,7 +19,8 @@ class LoginPage extends Component {
     axios
       .post("https://insurance-risk-assesment.herokuapp.com/api/login", { username, password })
       .then(res => {
-        localStorage.setItem("jwt", res.data.token);
+        console.log(res);
+        localStorage.setItem("jwt", res.data.key);
         this.props.loginHandler(e);
         this.setState({ message: "Login successful" });
       })
