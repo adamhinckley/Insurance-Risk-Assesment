@@ -15,6 +15,7 @@ class LoginPage extends Component {
   handleSubmit = e => {
     const { username, password } = this.state;
     e.preventDefault();
+    e.persist();
     axios
       .post("https://insurance-risk-assesment.herokuapp.com/api/login", { username, password })
       .then(res => {
@@ -24,7 +25,7 @@ class LoginPage extends Component {
       })
       .then(() => this.props.history.push("/"))
       .catch(err => {
-        console.log("login error", err);
+        console.log("login error", err.response.data.error);
         this.setState({ message: "Login failed" });
       });
   };

@@ -2,17 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const initialUser = {
-  username: "",
-  password: ""
-};
-
 class Register extends Component {
   constructor() {
     super();
     this.state = {
       username: "",
-      password: "",
+      password1: "",
+      password2: "",
       message: ""
     };
   }
@@ -23,16 +19,17 @@ class Register extends Component {
   };
 
   submitHandler = e => {
-    const { username, password } = this.state;
+    const { username, password1, password2 } = this.state;
     e.preventDefault();
     axios
-      .post("https://insurance-risk-assesment.herokuapp.com/api/registration", { username, password })
+      .post("https://insurance-risk-assesment.herokuapp.com/api/registration", { username, password1, password2 })
       .then(res => {
         if (res.status === 201) {
           this.setState({
             message: "Registration Successful",
             username: "",
-            password: ""
+            password1: "",
+            password2: ""
           });
         } else {
           throw new Error();
@@ -41,11 +38,16 @@ class Register extends Component {
       })
       .catch(err => {
         this.setState({
-          message: "registration failed",
+          message: "registration failed, both passwords must match",
           username: "",
           password: ""
         });
       });
+  };
+
+  changeHandler = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -67,10 +69,19 @@ class Register extends Component {
             type="password"
             id="password"
             name="password"
-            value={this.state.password}
+            value={this.state.password1}
             onChange={this.changeHandler}
             className="login-input"
             placeholder="Password"
+          />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={this.state.password2}
+            onChange={this.changeHandler}
+            className="login-input"
+            placeholder="password"
           />
           <button className="form-button">Register</button>
           <p>{this.state.message}</p>

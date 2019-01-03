@@ -51,7 +51,6 @@ class BuildChart extends React.Component {
             name="height"
             value={height}
             onChange={this.changeHandler}
-            className="custom-select"
             required
             placeholder="choose"
             className="input"

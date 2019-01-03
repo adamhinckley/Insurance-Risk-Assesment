@@ -1,7 +1,7 @@
 import React from "react";
 import BuildChart from "./components/BuildChart";
 import Home from "./components/Home";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import MedicationList from "./components/MedicationList";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -19,6 +19,12 @@ class App extends React.Component {
     localStorage.getItem("jwt") ? await this.setState({ loggedIn: true }) : alert("you need to login");
   };
 
+  logout = e => {
+    localStorage.removeItem("jwt");
+    this.setState({ loggedIn: false });
+    this.props.history.push("/");
+  };
+
   render() {
     return !this.state.loggedIn ? (
       <Switch>
@@ -32,9 +38,10 @@ class App extends React.Component {
           <Route path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
           <Route path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
         </Switch>
+        <button onClick={this.logout}>logout</button>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
