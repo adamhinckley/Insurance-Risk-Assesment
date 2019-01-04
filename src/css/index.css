@@ -145,7 +145,6 @@ nav .navLink {
 .login-container {
   display: flex;
   justify-content: center;
-  border: 1px solid red;
   align-items: center;
   height: 100vh;
   flex-direction: column;
@@ -158,6 +157,7 @@ nav .navLink {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 30px;
+  font-size: 1.6rem;
 }
 .login-container .login-input {
   width: 300px;
