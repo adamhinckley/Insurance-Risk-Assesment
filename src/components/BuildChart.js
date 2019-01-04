@@ -30,11 +30,14 @@ class BuildChart extends React.Component {
       .then(res => {
         console.log(res.data);
         if (res.data.plans.length === 0) {
-          this.setState({ message: "Not eligible for any plans", products: [] });
+          this.setState({
+            message: "Not eligible for any plans 🙁  ",
+            products: []
+          });
         } else {
           this.setState({
-            products: res.data.plans,
-            message: "Eligible to apply for:"
+            message: "Eligible to apply for:",
+            products: res.data.plans
           });
         }
       })
