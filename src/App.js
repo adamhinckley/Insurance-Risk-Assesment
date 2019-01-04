@@ -46,7 +46,7 @@ class App extends React.Component {
           <Route path="/check-build" render={ownProps => <BuildChart {...ownProps} />} />
           <Route path="/med-list" render={ownProps => <MedicationList {...ownProps} />} />
         </Switch>
-        <button onClick={this.logout}>logout</button>
+        {/* <button onClick={this.logout}>logout</button> */}
       </div>
     );
   }
