@@ -291,6 +291,23 @@ nav .navLink {
 .med-list ::placeholder {
   color: #59abdb;
 }
+.med-list .eligible-products-container {
+  margin-top: 10px;
+  width: 300px;
+}
+.med-list .eligible-products-container p {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 15px;
+  font-size: 1.6rem;
+  margin: 20px 0;
+}
+.med-list .eligible-products-container li {
+  margin-top: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.med-list .build-message {
+  text-align: center;
+}
 .med-input {
   width: 300px;
   height: 30px;

@@ -8,8 +8,9 @@ export default class MedicationList extends Component {
     super();
     this.state = {
       product: "",
-      medication: "test",
-      message: "big bird"
+      medication: "",
+      message: "",
+      outcome: []
     };
   }
   changeHandler = e => {
@@ -20,11 +21,15 @@ export default class MedicationList extends Component {
     e.preventDefault();
     const { product, medication } = this.state;
     axios
-      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { prescription: medication, Carrier: product })
+      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { prescription: medication, product: product })
       .then(res => {
-        this.setState({ message: "No data returned" });
+        if (!this.state.outcome.length === 0) {
+          this.setState({ message: "no data returned" });
+        } else {
+          this.setState({ outcome: res.data });
+        }
 
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -34,7 +39,7 @@ export default class MedicationList extends Component {
   putMedOnState = (e, input) => {
     // e.preventDefault();
     e.persist();
-    this.setState({ product: input });
+    this.setState({ medication: input });
     console.log("fired");
   };
 
@@ -51,51 +56,54 @@ export default class MedicationList extends Component {
           <label htmlFor="Product" />
           <select name="product" value={this.state.product} className="input" onChange={this.changeHandler}>
             <option className="medication-select">Choose Product</option>
-            <option value="CFG Dignified Choice" className="medication-select">
+            <option name="CFG Dignified Choice" value="CFG Dignified Choice" className="medication-select">
               CFG Dignified Choice
             </option>
-            <option value="CFG Term" className="medication-select">
+            <option name="CFG Term" value="CFG Term" className="medication-select">
               CFG Term
             </option>
-            <option value="Foresters PlanRight" className="medication-select">
+            <option name="Foresters PlanRight" value="Foresters PlanRight" className="medication-select">
               Foresters PlanRight
             </option>
-            <option value="Foresters Strong Foundation" className="medication-select">
+            <option
+              name="Foresters Strong Foundation"
+              value="Foresters Strong Foundation"
+              className="medication-select"
+            >
               Foresters Strong Foundation
             </option>
-            <option value="MOO Living Promise" className="medication-select">
+            <option name="MOO Living Promise" value="MOO Living Promise" className="medication-select">
               MOO Living Promise
             </option>
-            <option value="MOO Term" className="medication-select">
+            <option name="MOO Term" value="MOO Term" className="medication-select">
               MOO Term
             </option>
-            <option value="Phoenix Remembrance" className="medication-select">
+            <option name="Phoenix Remembrance" value="Phoenix Remembrance" className="medication-select">
               Phoenix Remembrance
             </option>
-            <option value="Phoenix Safe Harbor" className="medication-select">
+            <option name="Phoenix Safe Harbor" value="Phoenix Safe Harbor" className="medication-select">
               Phoenix Safe Harbor
             </option>
-            <option value="Transameirica solutions" className="medication-select">
+            <option name="Transameirica solutions" value="Transameirica solutions" className="medication-select">
               Transamerica Solutions
             </option>
             />
           </select>
           <Autocomplete suggestions={suggestions} putMedOnState={this.putMedOnState} />
 
-          <button>Check Medication</button>
+          <button type="submit">Check Medication</button>
         </form>
         <div className="eligible-products-container">
           <p className="build-message">{this.state.message}</p>
 
-          {/* {this.state.products.map(product => {
+          {this.state.outcome.map(product => {
             return (
-              <ul key={product.id}>
-                <li>
-                  {product.carrier} - {product.product2} {product.product3}
-                </li>
+              <ul key={product.medication}>
+                <li>Indication: {product.indication}</li>
+                <li>Outcome: {product.outcome}</li>
               </ul>
             );
-          })} */}
+          })}
         </div>
       </div>
     );

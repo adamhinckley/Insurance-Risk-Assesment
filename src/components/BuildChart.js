@@ -14,7 +14,8 @@ class BuildChart extends React.Component {
       gender: "",
       age: "",
       maleChecked: false,
-      femaleChecked: false
+      femaleChecked: false,
+      loading: false
     };
   }
   changeHandler = e => {
