@@ -29,10 +29,14 @@ class BuildChart extends React.Component {
       .post(`${api}/api/build`, { age, height, weight, gender })
       .then(res => {
         console.log(res.data);
-        this.setState({
-          products: res.data.plans,
-          message: "Eligible to apply for:"
-        });
+        if (res.data.plans.length === 0) {
+          this.setState({ message: "Not eligible for any plans", products: [] });
+        } else {
+          this.setState({
+            products: res.data.plans,
+            message: "Eligible to apply for:"
+          });
+        }
       })
       .catch(err => {
         console.log(err);
@@ -152,13 +156,15 @@ class BuildChart extends React.Component {
           </button>
         </div>
         <div className="eligible-products-container">
-          <p>{message}</p>
+          <p className="build-message">{message}</p>
 
           {this.state.products.map(product => {
             return (
-              <p key={product.id}>
-                {product.carrier} - {product.product2} {product.product3}
-              </p>
+              <ul key={product.id}>
+                <li>
+                  {product.carrier} - {product.product2} {product.product3}
+                </li>
+              </ul>
             );
           })}
         </div>

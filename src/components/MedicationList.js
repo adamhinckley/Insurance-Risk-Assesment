@@ -20,7 +20,7 @@ export default class MedicationList extends Component {
     e.preventDefault();
     const { product, medication } = this.state;
     axios
-      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { plan: product, med: medication })
+      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { prescription: medication, Carrier: product })
       .then(res => {
         console.log(res);
       })
