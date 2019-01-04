@@ -23,11 +23,7 @@ export default class MedicationList extends Component {
     axios
       .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { prescription: medication, product: product })
       .then(res => {
-        if (!this.state.outcome.length === 0) {
-          this.setState({ message: "no data returned" });
-        } else {
-          this.setState({ outcome: res.data });
-        }
+        this.setState({ outcome: res.data });
 
         console.log(res.data);
       })
@@ -84,7 +80,7 @@ export default class MedicationList extends Component {
             <option name="Phoenix Safe Harbor" value="Phoenix Safe Harbor" className="medication-select">
               Phoenix Safe Harbor
             </option>
-            <option name="Transameirica solutions" value="Transameirica solutions" className="medication-select">
+            <option name="Transamerica Solutions" value="Transamerica Solutions" className="medication-select">
               Transamerica Solutions
             </option>
             />
@@ -98,10 +94,15 @@ export default class MedicationList extends Component {
 
           {this.state.outcome.map(product => {
             return (
-              <ul key={product.medication}>
-                <li>Indication: {product.indication}</li>
-                <li>Outcome: {product.outcome}</li>
-              </ul>
+              <div key={product.medication + product.product + product.time} className="returned-data">
+                <ul>
+                  <li>Product: {product.product}</li>
+                  <li>Medication: {product.medication}</li>
+                  <li>Indication: {product.indication}</li>
+                  <li>TIme: {product.time}</li>
+                  <li>Outcome: {product.outcome}</li>
+                </ul>
+              </div>
             );
           })}
         </div>

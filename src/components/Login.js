@@ -59,7 +59,6 @@ class LoginPage extends Component {
             className="login-input"
           />
           <button className="form-button">Login</button>
-          <p>testpassword</p>
           <Link className="rr-link " to="/register">
             <p>register</p>
           </Link>
