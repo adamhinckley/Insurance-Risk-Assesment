@@ -39,29 +39,35 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="login-container">
-        <form className="login" onSubmit={this.handleSubmit}>
+        <div>
           <h1>Risk Assessment</h1>
           <h1>Login</h1>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={this.changeHandler}
-            value={this.state.username}
-            className="login-input"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={this.changeHandler}
-            value={this.state.password}
-            className="login-input"
-          />
+        </div>
+        <form className="login" onSubmit={this.handleSubmit}>
+          <div>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={this.changeHandler}
+              value={this.state.username}
+              className="login-input"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={this.changeHandler}
+              value={this.state.password}
+              className="login-input"
+            />
+          </div>
           <button className="form-button">Login</button>
-          <Link className="rr-link " to="/register">
+          {/* <Link className="rr-link " to="/register">
             <p>register</p>
-          </Link>
+          </Link> */}
           <p>{this.state.message}</p>
         </form>
       </div>

@@ -14,8 +14,7 @@ class Register extends Component {
   }
 
   changeHandler = e => {
-    const { name, value } = e.target;
-    this.setState({ user: { ...this.state.user, [name]: value } });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   submitHandler = e => {
@@ -68,7 +67,7 @@ class Register extends Component {
           <input
             type="password"
             id="password"
-            name="password"
+            name="password1"
             value={this.state.password1}
             onChange={this.changeHandler}
             className="login-input"
@@ -77,7 +76,7 @@ class Register extends Component {
           <input
             type="password"
             id="password"
-            name="password"
+            name="password2"
             value={this.state.password2}
             onChange={this.changeHandler}
             className="login-input"
