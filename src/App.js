@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: true
+      loggedIn: false
     };
   }
 
@@ -19,6 +19,8 @@ class App extends React.Component {
     if (token) {
       this.setState({ loggedIn: true });
       this.props.history.push("/");
+    } else {
+      this.props.history.push("/login");
     }
   }
 
