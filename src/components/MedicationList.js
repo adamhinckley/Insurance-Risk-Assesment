@@ -19,10 +19,14 @@ export default class MedicationList extends Component {
   getMedicationResult = e => {
     e.preventDefault();
     const { product, medication } = this.state;
+    const pSplit = product.split(', ')
+    const carrier = pSplit[0]
+    const product2 = pSplit[1]
+    console.log(carrier, product2)
     axios
-      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", { plan: product, med: medication })
+      .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", {prescription: medication.toLocaleLowerCase(), carrier: carrier, product2: product2})
       .then(res => {
-        console.log(res);
+        console.log(res.data[0].outcome);
       })
       .catch(err => {
         console.log(err);
@@ -32,7 +36,7 @@ export default class MedicationList extends Component {
   putMedOnState = (e, input) => {
     // e.preventDefault();
     e.persist();
-    this.setState({ product: input });
+    this.setState({ medication: input });
     console.log("fired");
   };
 
@@ -48,33 +52,13 @@ export default class MedicationList extends Component {
           <label htmlFor="Product" />
           <select name="product" value={this.state.product} className="input" onChange={this.changeHandler}>
             <option className="medication-select">Choose Product</option>
-            <option value="CFG, Dignified Choice" className="medication-select">
-              CFG Dignified Choice
-            </option>
-            <option value="CFG, Term" className="medication-select">
-              CFG Term
-            </option>
-            <option value="Foresters, PlanRight" className="medication-select">
-              Foresters PlanRight
-            </option>
-            <option value="Foresters, Strong Foundation" className="medication-select">
-              Foresters Strong Foundation
-            </option>
-            <option value="MOO, Living Promise" className="medication-select">
-              MOO Living Promise
-            </option>
-            <option value="MOO, Term" className="medication-select">
-              MOO Term
-            </option>
-            <option value="Phoenix, Remembrance" className="medication-select">
-              Phoenix Remembrance
-            </option>
-            <option value="Phoenix, Safe Harbor" className="medication-select">
-              Phoenix Safe Harbor
-            </option>
-            <option value="Transameirica, solutions" className="medication-select">
-              Transamerica Solutions
-            </option>
+            {products.map(prod => {
+              return (
+                <option key={prod.carrier + prod.product2} value={`${prod.carrier}, ${prod.product2}`} className="medication-select">
+                  {prod.carrier} {prod.product2}
+                </option>
+              )
+            })}
             />
           </select>
           <Autocomplete suggestions={suggestions} putMedOnState={this.putMedOnState} />
@@ -85,6 +69,17 @@ export default class MedicationList extends Component {
     );
   }
 }
+
+const products = [
+  { carrier: "CFG", product2: "Dignified Choice" },
+  { carrier: "CFG", product2: "Term" },
+  { carrier: "Foresters", product2: "PlanRight" },
+  { carrier: "MOO", product2: "Living Promise" },
+  { carrier: "MOO", product2: "Term" },
+  { carrier: "Phoenix", product2: "Remembrance" },
+  { carrier: "Phoenix", product2: "Safe Harbor" },
+  { carrier: "Transamerica", product2: "Solutions" }
+];
 
 const suggestions = [
   "Abilify",
