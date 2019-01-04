@@ -48,31 +48,31 @@ export default class MedicationList extends Component {
           <label htmlFor="Product" />
           <select name="product" value={this.state.product} className="input" onChange={this.changeHandler}>
             <option className="medication-select">Choose Product</option>
-            <option value="CFG Dignified Choice" className="medication-select">
+            <option value="CFG, Dignified Choice" className="medication-select">
               CFG Dignified Choice
             </option>
-            <option value="CFG Term" className="medication-select">
+            <option value="CFG, Term" className="medication-select">
               CFG Term
             </option>
-            <option value="Foresters PlanRight" className="medication-select">
+            <option value="Foresters, PlanRight" className="medication-select">
               Foresters PlanRight
             </option>
-            <option value="Foresters Strong Foundation" className="medication-select">
+            <option value="Foresters, Strong Foundation" className="medication-select">
               Foresters Strong Foundation
             </option>
-            <option value="MOO Living Promise" className="medication-select">
+            <option value="MOO, Living Promise" className="medication-select">
               MOO Living Promise
             </option>
-            <option value="MOO Term" className="medication-select">
+            <option value="MOO, Term" className="medication-select">
               MOO Term
             </option>
-            <option value="Phoenix Remembrance" className="medication-select">
+            <option value="Phoenix, Remembrance" className="medication-select">
               Phoenix Remembrance
             </option>
-            <option value="Phoenix Safe Harbor" className="medication-select">
+            <option value="Phoenix, Safe Harbor" className="medication-select">
               Phoenix Safe Harbor
             </option>
-            <option value="Transameirica" className="medication-select">
+            <option value="Transameirica, solutions" className="medication-select">
               Transamerica Solutions
             </option>
             />
