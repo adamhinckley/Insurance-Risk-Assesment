@@ -34,7 +34,6 @@ class Autocomplete extends Component {
     const filteredSuggestions = suggestions.filter(
       suggestion => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-    // this.props.medication = this.state.userInput;
 
     // Update the user input and filtered suggestions, reset the active
     // suggestion and make sure the suggestions are shown
@@ -140,7 +139,7 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
-        <input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput} className="med-input" />
+        <input type="text" onChange={onChange} onKeyDown={onKeyDown} value={userInput} className="med-input" placeholder='Enter Medication' />
         {suggestionsListComponent}
       </Fragment>
     );

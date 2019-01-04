@@ -46,6 +46,7 @@ class BuildChart extends React.Component {
   };
 
   render() {
+    console.log(this.state.products);
     const { weight, height, age, message } = this.state;
 
     return (
@@ -153,8 +154,12 @@ class BuildChart extends React.Component {
         <div className="eligible-products-container">
           <p>{message}</p>
 
-          {this.state.products.map(p => {
-            return <p key={p}>{p}</p>;
+          {this.state.products.map(product => {
+            return (
+              <p key={product.id}>
+                {product.carrier} - {product.product2} {product.product3}
+              </p>
+            );
           })}
         </div>
       </div>
