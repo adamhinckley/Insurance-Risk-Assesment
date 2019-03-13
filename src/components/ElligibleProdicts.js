@@ -8,7 +8,7 @@ const EligibleProducts = props => {
     } else if (outcome) {
         return (
             <div className="eligible-returned">
-                <p className="build-message">{message}</p>
+                <p className="message">{message}</p>
                 {/* eslint-disable-next-line */}
                 {outcome.map(product => {
                     if (product.product && product.medication) {
@@ -30,7 +30,7 @@ const EligibleProducts = props => {
     } else if (products) {
         return (
             <div className="eligible-returned">
-                <p className="build-message">{message}</p>
+                <p className="message">{message}</p>
                 {products.map(product => {
                     return (
                         <ul key={product.id}>

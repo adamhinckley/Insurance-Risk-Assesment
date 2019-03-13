@@ -25,7 +25,7 @@ export default class MedicationList extends Component {
         if (!product || !medication) {
             this.setState({ message: "Choose a product and medication" })
         } else {
-            this.setState({ loading: true })
+            this.setState({ loading: true, message: "" })
         }
         axios
             .post("https://insurance-risk-assesment.herokuapp.com/api/meds/", {

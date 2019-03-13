@@ -398,12 +398,13 @@ nav .navLink {
 }
 .eligible-returned {
   width: 300px;
+  padding-bottom: 10px;
 }
 .eligible-returned p {
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 15px;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   margin: 20px 0;
 }
 .eligible-returned li {
@@ -418,4 +419,11 @@ nav .navLink {
   margin: 5px 0;
   border-bottom: 0.5px solid white;
   padding-bottom: 5px;
+}
+.loading {
+  height: 20vh;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
