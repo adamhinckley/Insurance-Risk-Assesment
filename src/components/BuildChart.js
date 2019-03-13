@@ -27,7 +27,7 @@ class BuildChart extends React.Component {
     getResults = e => {
         const { age, height, weight, gender } = this.state
         if (!age || !height || !weight || !gender) {
-            this.setState({ message: "please complete the form", loading: true })
+            this.setState({ message: "please complete the form" })
         } else {
             this.setState({ loading: true })
         }
@@ -166,18 +166,6 @@ class BuildChart extends React.Component {
                     </button>
                 </div>
                 <EligibleProducts products={this.state.products} message={message} loading={this.state.loading} />
-                {/* <div className="eligible-products-container">
-                    <p className="build-message">{message}</p>
-                    {this.state.products.map(product => {
-                        return (
-                            <ul key={product.id}>
-                                <li>
-                                    {product.carrier} - {product.product2} {product.product3}
-                                </li>
-                            </ul>
-                        )
-                    })}
-                </div> */}
             </div>
         )
     }

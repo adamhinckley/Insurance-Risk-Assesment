@@ -1,17 +1,34 @@
 import React from "react"
 import ReactLoading from "react-loading"
+import Loading from "./Loading"
 
 const EligibleProducts = props => {
-    const { products, message, loading } = props
+    const { products, message, loading, outcome } = props
     if (loading) {
+        return <Loading loading={loading} />
+    } else if (outcome) {
         return (
-            <div className="eligible-loading">
-                <br />
-                <p>Getting your results</p>
-                <ReactLoading type={"spin"} color="#fff" width={"5%"} height={"5%"} />
+            <div className="eligible-products-container">
+                <p className="build-message">{message}</p>
+
+                {outcome.map(product => {
+                    if (product.product && product.medication) {
+                        return (
+                            <div key={product.medication + product.product + product.time} className="returned-data">
+                                <ul>
+                                    <li>Product: {product.product}</li>
+                                    <li>Medication: {product.medication}</li>
+                                    <li>Indication: {product.indication}</li>
+                                    <li>TIme: {product.time}</li>
+                                    <li>Outcome: {product.outcome}</li>
+                                </ul>
+                            </div>
+                        )
+                    }
+                })}
             </div>
         )
-    } else {
+    } else if (products) {
         return (
             <div className="eligible-returned">
                 <p className="build-message">{message}</p>
