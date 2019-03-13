@@ -7,18 +7,18 @@ const EligibleProducts = props => {
         return <Loading loading={loading} />
     } else if (outcome) {
         return (
-            <div className="eligible-products-container">
+            <div className="eligible-returned">
                 <p className="build-message">{message}</p>
                 {/* eslint-disable-next-line */}
                 {outcome.map(product => {
                     if (product.product && product.medication) {
                         return (
-                            <div key={product.medication + product.product + product.time} className="returned-data">
+                            <div key={product.medication + product.product + product.time} className="med-results">
                                 <ul>
-                                    <li>Product: {product.product}</li>
-                                    <li>Medication: {product.medication}</li>
+                                    {/* <li>Product: {product.product}</li> */}
+                                    {/* <li>Medication: {product.medication}</li> */}
                                     <li>Indication: {product.indication}</li>
-                                    <li>TIme: {product.time}</li>
+                                    <li>Time: {product.time}</li>
                                     <li>Outcome: {product.outcome}</li>
                                 </ul>
                             </div>

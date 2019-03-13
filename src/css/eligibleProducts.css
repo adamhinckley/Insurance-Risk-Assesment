@@ -35,4 +35,10 @@
   display: flex;
   justify-content: flex-start;
   text-align: left;
+  line-height: 23px;
+}
+.eligible-returned .med-results {
+  margin: 5px 0;
+  border-bottom: 0.5px solid white;
+  padding-bottom: 5px;
 }
