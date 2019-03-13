@@ -3,8 +3,8 @@ import BuildChart from "./components/BuildChart"
 import Home from "./components/Home"
 import { Route, Switch, withRouter } from "react-router-dom"
 import MedicationList from "./components/MedicationList"
-import Login from "./components/Login"
-import Register from "./components/Register"
+// import Login from "./components/Login"
+// import Register from "./components/Register"
 
 class App extends React.Component {
     constructor(props) {

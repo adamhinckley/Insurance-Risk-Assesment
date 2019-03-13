@@ -1,7 +1,6 @@
 import React from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import ReactLoading from "react-loading"
 import EligibleProducts from "./ElligibleProdicts"
 
 const api = "https://insurance-risk-assesment.herokuapp.com"
@@ -34,7 +33,6 @@ class BuildChart extends React.Component {
         axios
             .post(`${api}/api/build`, { age, height, weight, gender })
             .then(res => {
-                console.log(res.data)
                 if (res.data.plans.length === 0) {
                     this.setState({
                         message: "Not eligible for any plans 🙁  ",

@@ -1,5 +1,4 @@
 import React from "react"
-import ReactLoading from "react-loading"
 import Loading from "./Loading"
 
 const EligibleProducts = props => {
@@ -10,7 +9,7 @@ const EligibleProducts = props => {
         return (
             <div className="eligible-products-container">
                 <p className="build-message">{message}</p>
-
+                {/* eslint-disable-next-line */}
                 {outcome.map(product => {
                     if (product.product && product.medication) {
                         return (

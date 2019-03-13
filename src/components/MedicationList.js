@@ -34,8 +34,6 @@ export default class MedicationList extends Component {
             })
             .then(res => {
                 this.setState({ outcome: res.data, loading: false })
-
-                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -46,11 +44,10 @@ export default class MedicationList extends Component {
         // e.preventDefault();
         e.persist()
         this.setState({ medication: input })
-        console.log("fired")
     }
 
     render() {
-        const { product, medication, message, outcome, loading } = this.state
+        const { message, outcome, loading } = this.state
         return (
             <div className="med-list">
                 <div className="back-button-container">
@@ -104,24 +101,6 @@ export default class MedicationList extends Component {
                     <button type="submit">Check Medication</button>
                 </form>
                 <EligibleProducts outcome={outcome} message={message} loading={loading} />
-
-                {/* <div className="eligible-products-container">
-                    <p className="build-message">{this.state.message}</p>
-
-                    {this.state.outcome.map(product => {
-                        return (
-                            <div key={product.medication + product.product + product.time} className="returned-data">
-                                <ul>
-                                    <li>Product: {product.product}</li>
-                                    <li>Medication: {product.medication}</li>
-                                    <li>Indication: {product.indication}</li>
-                                    <li>TIme: {product.time}</li>
-                                    <li>Outcome: {product.outcome}</li>
-                                </ul>
-                            </div>
-                        )
-                    })}
-                </div> */}
             </div>
         )
     }
