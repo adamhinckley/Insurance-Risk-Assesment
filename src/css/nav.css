@@ -1,0 +1,8 @@
+nav {
+  display: flex;
+  justify-content: center;
+}
+nav .navLink {
+  text-decoration: none;
+  color: black;
+}

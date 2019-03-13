@@ -272,6 +272,7 @@ nav .navLink {
 .buildChart .eligible-products-container {
   margin-top: 10px;
   width: 300px;
+  text-align: center;
 }
 .buildChart .eligible-products-container p {
   font-family: Arial, Helvetica, sans-serif;
@@ -285,6 +286,10 @@ nav .navLink {
 }
 .buildChart .build-message {
   text-align: center;
+}
+.eligible-products-container-loading {
+  display: flex;
+  justify-content: center;
 }
 .med-list {
   display: flex;
@@ -368,4 +373,42 @@ nav .navLink {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   line-height: 40px;
+}
+.eligible-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  flex-direction: column;
+}
+.eligible-loading p {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px 0;
+}
+.eligible-loading .loading {
+  display: flex;
+  justify-content: center;
+}
+.eligible-loading .build-message {
+  margin-top: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+}
+.eligible-returned {
+  width: 300px;
+}
+.eligible-returned p {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 15px;
+  font-size: 1.4rem;
+  margin: 20px 0;
+}
+.eligible-returned li {
+  margin-top: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
 }

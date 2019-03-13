@@ -1,0 +1,40 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.login-container .login {
+  display: flex;
+  flex-direction: column;
+}
+.login-container h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
+  font-size: 1.6rem;
+}
+.login-container p {
+  font-size: 1.6rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.login-container .login-input {
+  width: 300px;
+  height: 30px;
+  font-size: 1.4rem;
+  background-color: white;
+  color: #59abdb;
+  margin-bottom: 20px;
+}
+.login-container button {
+  width: 300px;
+  height: 45px;
+  background-color: #59abdb;
+  color: white;
+  border-radius: 7px;
+  font-size: 1.4rem;
+  border: 1px solid white;
+  cursor: pointer;
+}
