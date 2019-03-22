@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import EligibleProducts from "./EligibleProducts"
@@ -6,57 +6,60 @@ import EligibleProducts from "./EligibleProducts"
 const api = "https://insurance-risk-assesment.herokuapp.com"
 
 const BuildChart = () => {
-    const [state, setState] = useState([
-        {
-            height: null,
-            weight: "",
-            message: "",
-            products: [],
-            gender: "",
-            age: "",
-            maleChecked: false,
-            femaleChecked: false,
-            loading: false
-        }
-    ])
+    const [state, setState] = useState({
+        height: undefined,
+        weight: "",
+        message: "",
+        products: [],
+        gender: "",
+        age: "",
+        maleChecked: false,
+        femaleChecked: false,
+        loading: false
+    })
 
     const changeHandler = e => {
-        setState({ [e.target.name]: e.target.value })
+        const prevState = { ...state }
+        setState({ ...prevState, [e.target.name]: e.target.value })
     }
 
-    const getResults = e => {
-        const [age, height, weight, gender] = state
+    const getResults = () => {
+        const { age, height, weight, gender } = state
         if (!age || !height || !weight || !gender) {
-            setState({ message: "please complete the form" })
+            setState(prevState => ({ ...prevState, message: "please complete the form" }))
         } else {
-            setState({ loading: true })
+            setState(prevState => ({ ...prevState, loading: true }))
         }
-        axios
-            .post(`${api}/api/build`, { age, height, weight, gender })
-            .then(res => {
-                if (res.data.plans.length === 0) {
-                    setState({
-                        message: "Not eligible for any plans 🙁  ",
-                        products: [],
-                        loading: false
-                    })
-                } else {
-                    setState({
-                        message: "Eligible to apply for:",
-                        products: res.data.plans,
-                        loading: false
-                    })
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        useEffect(() => {
+            axios
+                .post(`${api}/api/build`, { age, height, weight, gender })
+                .then(res => {
+                    if (res.data.plans.length === 0) {
+                        setState(prevState => ({
+                            ...prevState,
+                            message: "Not eligible for any plans 🙁  ",
+                            products: [],
+                            loading: false
+                        }))
+                    } else {
+                        setState(prevState => ({
+                            ...prevState,
+                            message: "Eligible to apply for:",
+                            products: res.data.plans,
+                            loading: false
+                        }))
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }, [])
     }
 
     const radioHandler = e => {
         !state.maleChecked
-            ? setState({ maleChecked: true, femaleChecked: false, gender: "male" })
-            : setState({ maleChecked: false, femaleChecked: true, gender: "female" })
+            ? setState(prevState => ({ ...prevState, maleChecked: true, femaleChecked: false, gender: "male" }))
+            : setState(prevState => ({ ...prevState, maleChecked: false, femaleChecked: true, gender: "female" }))
     }
 
     return (
