@@ -30,30 +30,29 @@ const BuildChart = () => {
         } else {
             setState(prevState => ({ ...prevState, loading: true }))
         }
-        useEffect(() => {
-            axios
-                .post(`${api}/api/build`, { age, height, weight, gender })
-                .then(res => {
-                    if (res.data.plans.length === 0) {
-                        setState(prevState => ({
-                            ...prevState,
-                            message: "Not eligible for any plans 🙁  ",
-                            products: [],
-                            loading: false
-                        }))
-                    } else {
-                        setState(prevState => ({
-                            ...prevState,
-                            message: "Eligible to apply for:",
-                            products: res.data.plans,
-                            loading: false
-                        }))
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }, [])
+
+        axios
+            .post(`${api}/api/build`, { age, height, weight, gender })
+            .then(res => {
+                if (res.data.plans.length === 0) {
+                    setState(prevState => ({
+                        ...prevState,
+                        message: "Not eligible for any plans 🙁  ",
+                        products: [],
+                        loading: false
+                    }))
+                } else {
+                    setState(prevState => ({
+                        ...prevState,
+                        message: "Eligible to apply for:",
+                        products: res.data.plans,
+                        loading: false
+                    }))
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     const radioHandler = e => {
