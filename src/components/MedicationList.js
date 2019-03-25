@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import Autocomplete from "./AutoComplete"
-import EligibleProducts from "./ElligibleProdicts"
+import EligibleProducts from "./EligibleProducts"
 
 export default class MedicationList extends Component {
     constructor() {

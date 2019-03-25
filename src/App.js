@@ -1,5 +1,5 @@
 import React from "react"
-import BuildChart from "./components/BuildChart"
+import BuildChart from "./components/BuildChartHooks"
 import Home from "./components/Home"
 import { Route, Switch, withRouter } from "react-router-dom"
 import MedicationList from "./components/MedicationList"

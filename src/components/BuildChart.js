@@ -1,14 +1,14 @@
 import React from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import EligibleProducts from "./ElligibleProdicts"
+import EligibleProducts from "./EligibleProducts"
 
 const api = "https://insurance-risk-assesment.herokuapp.com"
 class BuildChart extends React.Component {
     constructor() {
         super()
         this.state = {
-            height: undefined,
+            height: null,
             weight: "",
             message: "",
             products: [],
